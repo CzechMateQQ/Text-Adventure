@@ -1,0 +1,7 @@
+C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\bin\Debug\Jesse's Text Adventure.exe.config
+C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\bin\Debug\Jesse's Text Adventure.exe
+C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\bin\Debug\Jesse's Text Adventure.pdb
+C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\obj\Debug\Jesse's Text Adventure.csprojAssemblyReference.cache
+C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\obj\Debug\Jesse's Text Adventure.csproj.CoreCompileInputs.cache
+C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\obj\Debug\Jesse's Text Adventure.exe
+C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\obj\Debug\Jesse's Text Adventure.pdb
