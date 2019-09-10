@@ -65,14 +65,15 @@ namespace Jesse_s_Text_Adventure
             Console.WriteLine("\n//Select item's ID # to purchase//");
 
             int purchaseItem;
-            while(! int.TryParse(Console.ReadLine(), out purchaseItem))
+            while(!int.TryParse(Console.ReadLine(), out purchaseItem))
             { }
 
             while (Program.user.playerGold < ItemList[purchaseItem - 1].Cost)
             {
                 Console.WriteLine($"You only have {Program.user.playerGold} gold.");
+                while (!int.TryParse(Console.ReadLine(), out purchaseItem))
+                { }
             }
-
 
             Console.Clear();
             Console.WriteLine("You have purchased:\n");
@@ -80,7 +81,6 @@ namespace Jesse_s_Text_Adventure
             Program.user.playerGold -= ItemList[purchaseItem - 1].Cost;
             Console.WriteLine($"\nYou now have {Program.user.playerGold} gold.");
             Console.ReadKey();
-
 
         }
 
