@@ -24,10 +24,10 @@ namespace Jesse_s_Text_Adventure
             {
                 Console.WriteLine("Your name must be at least 3 characters long, please try again");
                 user.playerName = Console.ReadLine();
-                Console.Clear();
             }
 
-            Console.WriteLine($"\nHi {user.playerName}! Welcome to Jesse's Text Adventure.\n\n//Press any key to begin//");
+            Console.Clear();
+            Console.WriteLine($"Hi {user.playerName}! Welcome to Jesse's Text Adventure.\n\n//Press any key to begin//");
             Console.ReadKey();
             Console.Clear();
         }
@@ -49,7 +49,6 @@ namespace Jesse_s_Text_Adventure
             {
                 Console.WriteLine("Not a valid input, please enter your choice number");
                 choiceA = Console.ReadLine();
-                Console.Clear();
             }
 
             if (choiceA == "1")
@@ -78,10 +77,11 @@ namespace Jesse_s_Text_Adventure
             Inventory store = new Inventory();
             store.LoadCSV("VendorStore.csv");
 
+            store.Shop();
+
             Inventory playerInv = new Inventory();
             playerInv.LoadCSV("PlayerInventory.csv");
 
-            store.Shop();
 
             Console.WriteLine("Would you Like to sell anything? Enter \"yes\" or \"no\"");          
             string choiceB = Console.ReadLine().ToLower();
