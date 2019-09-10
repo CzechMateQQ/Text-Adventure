@@ -1,11 +1,9 @@
-﻿Item ID,Attack,Armor,Weight,Price
-Sword of Justice,20,0,30,50
-Gladiator's Pike,40,0,25,100
-MC's Hammer,60,0,40,300
-Excalibur,80,0,35,500
-Leather Armor,0,20,30,30
-Iron Armor,0,70,50,150
-Diamond Armor,0,150,80,300
-Health Potion,0,0,1,25
-Health Potion,0,0,1,25
-Health Potion,0,0,1,25
+﻿ItemId,ItemName,Attack,Armor,Weight,Cost
+1,Stabby Sword,40,0,30,50
+2,Gladiator's Pike,60,0,25,100
+3,MC's Hammer,80,0,40,300
+4,Excalibur,100,0,35,500
+5,Leather Armor,0,20,30,30
+6,Iron Armor,0,70,50,150
+7,Diamond Armor,0,150,80,300
+8,Health Potion,0,0,1,25

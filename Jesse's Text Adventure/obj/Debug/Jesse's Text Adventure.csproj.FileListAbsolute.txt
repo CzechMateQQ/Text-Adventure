@@ -5,3 +5,5 @@ C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\obj\
 C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\obj\Debug\Jesse's Text Adventure.csproj.CoreCompileInputs.cache
 C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\obj\Debug\Jesse's Text Adventure.exe
 C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\obj\Debug\Jesse's Text Adventure.pdb
+C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\bin\Debug\PlayerInventory.csv
+C:\Users\s199083\source\repos\Jesse's Text Adventure\Jesse's Text Adventure\bin\Debug\VendorStore.csv
