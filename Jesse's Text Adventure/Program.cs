@@ -77,16 +77,15 @@ namespace Jesse_s_Text_Adventure
             Inventory store = new Inventory();
             store.LoadCSV("VendorStore.csv");
 
-            store.Shop();
-
             Inventory playerInv = new Inventory();
             playerInv.LoadCSV("PlayerInventory.csv");
 
+            store.Shop(playerInv);
 
-            Console.WriteLine("Would you Like to sell anything? Enter \"yes\" or \"no\"");          
+            Console.WriteLine("\nWould you like to buy anything else? Enter \"yes\" or \"no\"");
             string choiceB = Console.ReadLine().ToLower();
 
-            while(choiceB != "yes" && choiceB != "no")
+            while (choiceB != "yes" && choiceB != "no")
             {
                 Console.WriteLine("Invalid input, enter \"yes\" or \"no\"");
                 choiceB = Console.ReadLine().ToLower();
@@ -94,44 +93,63 @@ namespace Jesse_s_Text_Adventure
 
             if (choiceB == "yes")
             {
-                playerInv.Sell();
+                Console.Clear();
+                store.Shop(playerInv);
             }
 
             else if (choiceB == "no")
             {
+                Console.ReadKey();
+                Console.Clear();
+            }
+
+            Console.WriteLine("\nWould you Like to sell anything? Enter \"yes\" or \"no\"");          
+            string choiceC = Console.ReadLine().ToLower();
+
+            while(choiceC != "yes" && choiceC != "no")
+            {
+                Console.WriteLine("Invalid input, enter \"yes\" or \"no\"");
+                choiceC = Console.ReadLine().ToLower();
+            }
+
+            if (choiceC == "yes")
+            {
+                Console.Clear();
+                playerInv.Sell(store);
+            }
+
+            else if (choiceC == "no")
+            {
                 Console.WriteLine("Very well adventurer.");
             }
 
-
-
-
-            
+            Console.Clear();
 
             Console.WriteLine($"I hope your new equipment serves you well, {user.playerName}, are you ready to venture onward? " +
                 $"You may return to my shop after each encounter should you choose." +
                 $"\n1. Enter the cave\n2. Return to shop");
 
-            string choiceC = Console.ReadLine();
+            string choiceD = Console.ReadLine();
 
-            while (choiceC != "1" && choiceC != "2")
+            while (choiceD != "1" && choiceD != "2")
             {
                 Console.WriteLine("Not a valid input, please enter your choice number");
-                choiceC = Console.ReadLine();
+                choiceD = Console.ReadLine();
                 Console.Clear();
             }
 
-            if (choiceC == "1")
+            if (choiceD == "1")
             {
                 Console.Clear();
                 Console.WriteLine("You put on a brave face and let the darkness engulf you as you step forward into the maw of the cave...");
                 Console.ReadKey();
             }
 
-            else if (choiceC == "2")
+            else if (choiceD == "2")
             {
                 Console.Clear();
-                //store
-                //Console.Clear();
+                store.Shop(playerInv);
+                Console.Clear();
                 Console.WriteLine("Feeling slightly more prepared, you put on a brave face and let the darkness engulf you as you step forward into the maw of the cave...");
                 Console.ReadKey();
             }
