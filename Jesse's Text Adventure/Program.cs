@@ -15,7 +15,7 @@ namespace Jesse_s_Text_Adventure
             Console.WriteLine("Welcome to Jesse's Text Adventure!");
             Console.Clear();
 
-            
+
             Console.WriteLine("Please enter your character's name (At least 3 characters).");
 
             user.playerName = Console.ReadLine();
@@ -31,6 +31,14 @@ namespace Jesse_s_Text_Adventure
             Console.ReadKey();
             Console.Clear();
         }
+
+        public string cmd = "";
+        //while(cmd != "leave"){}
+
+        public static Enemy wolf = new Enemy();
+        public static Enemy zombie = new Enemy();
+        public static Enemy dragon = new Enemy();
+
         static void Main(string[] args)
         {
             Intro();
@@ -45,7 +53,7 @@ namespace Jesse_s_Text_Adventure
 
             string choiceA = Console.ReadLine();
 
-            while (choiceA != "1" && choiceA != "2" )
+            while (choiceA != "1" && choiceA != "2")
             {
                 Console.WriteLine("Not a valid input, please enter your choice number");
                 choiceA = Console.ReadLine();
@@ -70,7 +78,7 @@ namespace Jesse_s_Text_Adventure
                 Console.ReadKey();
             }
 
-            Console.WriteLine("\nCome hither, young adventurer, and browse my wares!\n\n//Press any key to enter shop//");
+            Console.WriteLine("\n\"Come hither, young adventurer, and browse my wares!\"\n\n//Press any key to enter shop//");
             Console.ReadKey();
             Console.Clear();
 
@@ -81,8 +89,9 @@ namespace Jesse_s_Text_Adventure
             playerInv.LoadCSV("PlayerInventory.csv");
 
             store.Shop(playerInv);
+            store.SaveCsv();
 
-            Console.WriteLine("\nWould you like to buy anything else? Enter \"yes\" or \"no\"");
+            Console.WriteLine("\n\"Would you like to buy anything else?\" Enter \"yes\" or \"no\"");
             string choiceB = Console.ReadLine().ToLower();
 
             while (choiceB != "yes" && choiceB != "no")
@@ -95,18 +104,18 @@ namespace Jesse_s_Text_Adventure
             {
                 Console.Clear();
                 store.Shop(playerInv);
+                store.SaveCsv();
             }
 
             else if (choiceB == "no")
             {
-                Console.ReadKey();
-                Console.Clear();
+                Console.WriteLine("\n\"Very well then.\"");
             }
 
-            Console.WriteLine("\nWould you Like to sell anything? Enter \"yes\" or \"no\"");          
+            Console.WriteLine("\"Would you Like to sell anything?\" Enter \"yes\" or \"no\"");
             string choiceC = Console.ReadLine().ToLower();
 
-            while(choiceC != "yes" && choiceC != "no")
+            while (choiceC != "yes" && choiceC != "no")
             {
                 Console.WriteLine("Invalid input, enter \"yes\" or \"no\"");
                 choiceC = Console.ReadLine().ToLower();
@@ -116,17 +125,18 @@ namespace Jesse_s_Text_Adventure
             {
                 Console.Clear();
                 playerInv.Sell(store);
+                playerInv.SaveCsv();
             }
 
             else if (choiceC == "no")
             {
-                Console.WriteLine("Very well adventurer.");
+                Console.WriteLine("\"Very well adventurer.\"");
             }
 
             Console.Clear();
 
-            Console.WriteLine($"I hope your new equipment serves you well, {user.playerName}, are you ready to venture onward? " +
-                $"You may return to my shop after each encounter should you choose." +
+            Console.WriteLine($"\"I hope your new equipment serves you well, {user.playerName}, are you ready to venture onward? " +
+                $"You may return to my shop after each encounter should you choose.\"" +
                 $"\n1. Enter the cave\n2. Return to shop");
 
             string choiceD = Console.ReadLine();
@@ -149,6 +159,7 @@ namespace Jesse_s_Text_Adventure
             {
                 Console.Clear();
                 store.Shop(playerInv);
+                store.SaveCsv();
                 Console.Clear();
                 Console.WriteLine("Feeling slightly more prepared, you put on a brave face and let the darkness engulf you as you step forward into the maw of the cave...");
                 Console.ReadKey();
@@ -160,11 +171,43 @@ namespace Jesse_s_Text_Adventure
                 "Press any key to begin fight");
             Console.ReadKey();
 
-            //BattleOne();
+            
+            //user.playerAttack = 30;
+            wolf.BattleOne();
 
+            Console.Clear();
+            Console.WriteLine("Leaving the corpse of the wolf behind you, you continue farther into the cave." +
+                "Around a corner farther up the path, \n" +
+                "you here a garbled groaning sound that seems to be getting louder...\n");
+            Console.ReadKey();
+            Console.WriteLine("\nJust as the shadow of it appears around the bend, the source of the noise becomes clear..." +
+                "It's a ZOMBIE!\n\nPress any key to begin fight");
+            Console.ReadKey();
 
+            //BattleTwo();
 
+            Console.Clear();
+            Console.WriteLine("Leaving the corpse of the...corpse behind you, you continue onward yet again, wondering what your next dance with death will involve.\n" +
+                "Maybe a bear? Or possibly a troll?");
+            Console.ReadKey();
+            Console.WriteLine("You notice the light in the cave begin to intensify, though the winding path obstructs your vision from what this second source of light may be.\n" +
+                "The temperature around you seems to rise in tandem  with the brightness.\n" +
+                "And then a mighty roar confirms your fears...\n\n");
+            Console.ReadKey();
+            Console.WriteLine("The final enemy is a fire breathing dragon!\n\nPress any key to begin fight");
+            Console.ReadKey();
+
+            //BattleThree();
+
+            Console.Clear();
+            Console.WriteLine("Exhausted from the days battles, and lugging your inventory around, you depart the cave for the first and last time.\n" +
+                "You wave to the old vendor, who gives only a nod in return, and head home to take a well-earned nap.");
+            Console.ReadKey();
+            Console.Clear();
+            Console.WriteLine("Congratulations, You WIN!!!");
+            Console.ReadKey();
+            return;
         }
-    
     }
+    
 }

@@ -10,7 +10,7 @@ namespace Jesse_s_Text_Adventure
     {
         public string playerName;
         public int playerGold = 100;
-        public int playerHealth;
-        public int playerAttack;
+        public int playerHealth = 100;
+        public int playerAttack = 30;
     }
 }

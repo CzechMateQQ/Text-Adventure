@@ -10,17 +10,17 @@ namespace Jesse_s_Text_Adventure
     public class Inventory
     {
         public List<Item> ItemList = new List<Item>();
-        public string fn;
+        public string fileName;
         public void LoadCSV(string ItemString)
         {
             List<string> ItemStringList = new List<string>();
-            fn = ItemString;
-            using (StreamReader stream1 = new StreamReader(ItemString))
+            fileName = ItemString;
+            using (StreamReader sr = new StreamReader(ItemString))
             {
-                stream1.ReadLine();
-                while (!stream1.EndOfStream)
+                sr.ReadLine();
+                while (!sr.EndOfStream)
                 {
-                    ItemStringList.Add(stream1.ReadLine());
+                    ItemStringList.Add(sr.ReadLine());
                 }
             }
 
@@ -48,15 +48,24 @@ namespace Jesse_s_Text_Adventure
         {
             for (int idx = 0; idx < ItemList.Count; ++idx)
             {
-                Console.WriteLine($"ID #: {idx + 1}, Name: {ItemList[idx].ItemName}, Attack Power: {ItemList[idx].Attack}," +
-                    $" Armor: {ItemList[idx].Armor}, Weight: {ItemList[idx].Weight}, Cost: {ItemList[idx].Cost}");
+                Console.WriteLine(
+                    $"ID #: {idx + 1}, " +
+                    $"Name: {ItemList[idx].ItemName}, " +
+                    $"Attack Power: {ItemList[idx].Attack}, " +
+                    $"Armor: {ItemList[idx].Armor}, " +
+                    $"Weight: {ItemList[idx].Weight}, " +
+                    $"Cost: {ItemList[idx].Cost}");
                 Console.WriteLine("\n");
             }
         }
 
         public void ShowItem(Item it)
         {
-            Console.WriteLine($"{it.ItemName}, Attack: {it.Attack}, Armor: {it.Armor}, Weight: {it.Weight}, Cost: {it.Cost}");
+            Console.WriteLine($"{it.ItemName}, " +
+                $"Attack: {it.Attack}, " +
+                $"Armor: {it.Armor}, " +
+                $"Weight: {it.Weight}, " +
+                $"Cost: {it.Cost}");
         }
 
         public void Shop(Inventory customer)
@@ -77,6 +86,7 @@ namespace Jesse_s_Text_Adventure
             }
 
             customer.ItemList.Add(ItemList[purchaseItem - 1]);
+            ItemList.RemoveAt(purchaseItem - 1);
 
             Console.Clear();
             Console.WriteLine("You have purchased:\n");
@@ -98,7 +108,8 @@ namespace Jesse_s_Text_Adventure
             while (!int.TryParse(Console.ReadLine(), out sellItem))
             { }
 
-            seller.ItemList.Remove(ItemList[sellItem - 1]);
+            seller.ItemList.Add(ItemList[sellItem - 1]);
+            ItemList.RemoveAt(sellItem - 1);
 
             Console.WriteLine("You have sold: ");
             ShowItem(ItemList[sellItem - 1]);
@@ -109,9 +120,20 @@ namespace Jesse_s_Text_Adventure
 
         public void SaveCsv()
         {
-            using (StreamWriter sw = new StreamWriter(fn))
+            using (StreamWriter sw = new StreamWriter(fileName))
             {
+                sw.WriteLine("ItemId,ItemName,Attack,Armor,Weight,Cost");
 
+                foreach (Item it in ItemList)
+                {
+                    sw.WriteLine($"{it.ItemId}," +
+                        $"{it.ItemName}," +
+                        $"{it.Attack}," +
+                        $"{it.Armor}," +
+                        $"{it.Weight}," +
+                        $"{it.Cost}");
+                }
+                sw.Close();
             }
         }
     }        
