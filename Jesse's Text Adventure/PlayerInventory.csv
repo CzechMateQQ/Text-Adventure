@@ -1,4 +1,3 @@
 ﻿ItemId,ItemName,Attack,Armor,Weight,Price
-1,Recruit Sword,20,0,25,20
+1,Recruit Sword,5,0,25,20
 2,Recruit Armor,0,10,20,30
-3,Potion of Health,0,0,0,50

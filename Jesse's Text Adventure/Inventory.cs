@@ -9,6 +9,7 @@ namespace Jesse_s_Text_Adventure
 {
     public class Inventory
     {
+        //Creates list from CSV file values
         public List<Item> ItemList = new List<Item>();
         public string fileName;
         public void LoadCSV(string ItemString)
@@ -44,6 +45,7 @@ namespace Jesse_s_Text_Adventure
 
         }
 
+        //Displays entire list of items
         public void ShowItemList()
         {
             for (int idx = 0; idx < ItemList.Count; ++idx)
@@ -59,6 +61,7 @@ namespace Jesse_s_Text_Adventure
             }
         }
 
+        //Displays single item
         public void ShowItem(Item it)
         {
             Console.WriteLine($"{it.ItemName}, " +
@@ -68,36 +71,42 @@ namespace Jesse_s_Text_Adventure
                 $"Cost: {it.Cost}");
         }
 
+        //Method to buy items from the shop
         public void Shop(Inventory customer)
-        {
-            ShowItemList();
-            Console.WriteLine($"\nYou currently have {Program.user.playerGold} gold.");
-            Console.WriteLine("\n//Select item's ID # to purchase//");
+        {     
+                ShowItemList();
+                Console.WriteLine($"\nYou currently have {Program.user.playerGold} gold.");
+                Console.WriteLine("\n//Select item's ID # to purchase//");
 
-            int purchaseItem;
-            while (!int.TryParse(Console.ReadLine(), out purchaseItem))
-            { }
-
-            while (Program.user.playerGold < ItemList[purchaseItem - 1].Cost)
-            {
-                Console.WriteLine($"You only have {Program.user.playerGold} gold.");
+                int purchaseItem;
                 while (!int.TryParse(Console.ReadLine(), out purchaseItem))
-                { }
-            }
+                { }             
 
-            customer.ItemList.Add(ItemList[purchaseItem - 1]);
-            ItemList.RemoveAt(purchaseItem - 1);
+                //Checks if user has enough gold for purchase
+                while (Program.user.playerGold < ItemList[purchaseItem - 1].Cost)
+                {
+                    Console.WriteLine($"You only have {Program.user.playerGold} gold.");
+                    while (!int.TryParse(Console.ReadLine(), out purchaseItem))
+                    { }
+                }
 
-            Console.Clear();
-            Console.WriteLine("You have purchased:\n");
+                Console.Clear();
+                Console.WriteLine("You have purchased:\n");
+                ShowItem(ItemList[purchaseItem - 1]);
 
-            ShowItem(ItemList[purchaseItem - 1]);
-            Program.user.playerGold -= ItemList[purchaseItem - 1].Cost;
-            Console.WriteLine($"\nYou now have {Program.user.playerGold} gold.");
-            Console.ReadKey();
+                //Subtracts cost from player gold
+                Program.user.playerGold -= ItemList[purchaseItem - 1].Cost;
 
+                //Removes item from shop and adds it to player inventory
+                customer.ItemList.Add(ItemList[purchaseItem - 1]);
+                ItemList.RemoveAt(purchaseItem - 1);
+
+                Console.WriteLine($"\nYou now have {Program.user.playerGold} gold.");
+                Console.ReadKey();
+            
         }
 
+        //Method to sell items from player inventory
         public void Sell(Inventory seller)
         {
             ShowItemList();
@@ -108,16 +117,19 @@ namespace Jesse_s_Text_Adventure
             while (!int.TryParse(Console.ReadLine(), out sellItem))
             { }
 
-            seller.ItemList.Add(ItemList[sellItem - 1]);
-            ItemList.RemoveAt(sellItem - 1);
 
             Console.WriteLine("You have sold: ");
             ShowItem(ItemList[sellItem - 1]);
             Program.user.playerGold += ItemList[sellItem - 1].Cost;
+
+            seller.ItemList.Add(ItemList[sellItem - 1]);
+            ItemList.RemoveAt(sellItem - 1);
+
             Console.WriteLine($"\nYou now have {Program.user.playerGold} gold.");
             Console.ReadKey();
         }
 
+        //Method to overwrite CSV file and save updated version
         public void SaveCsv()
         {
             using (StreamWriter sw = new StreamWriter(fileName))
@@ -136,7 +148,24 @@ namespace Jesse_s_Text_Adventure
                 sw.Close();
             }
         }
-    }        
+
+        //Object aggregation to filter weapons from item list
+        public void DisplayWeapons()
+        {
+            foreach (Item it in ItemList)
+            {
+                if (it.Attack > 0)
+                {
+                    Console.WriteLine($"Weapons: {it.ItemName}, {it.Attack}");
+                }
+
+                else
+                {
+                   
+                }
+            }
+        }
+    }
 }
 
 
