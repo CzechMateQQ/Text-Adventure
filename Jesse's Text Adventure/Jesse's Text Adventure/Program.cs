@@ -39,9 +39,9 @@ namespace Jesse_s_Text_Adventure
         public string cmd = "";
 
         //Initialize enemies
-        public static Enemy wolf = new Enemy.Wolf();
-        public static Enemy zombie = new Enemy.Zombie();
-        public static Enemy dragon = new Enemy.Dragon();
+        public static Enemy.Wolf wolf = new Enemy.Wolf();
+        public static Enemy.Zombie zombie = new Enemy.Zombie();
+        public static Enemy.Dragon dragon = new Enemy.Dragon();
 
         //Initializes store and inventory
         public static Inventory playerInv = new Inventory();
@@ -190,7 +190,7 @@ namespace Jesse_s_Text_Adventure
                 "Around a corner farther up the path, \n" +
                 "you here a garbled groaning sound that seems to be getting louder...\n");
             Console.ReadKey();
-            Console.WriteLine("Just as the shadow of it appears around the bend, the source of the noise becomes clear...It's a ZOMBIE!\n\n" +
+            Console.WriteLine("\nJust as the shadow of it appears around the bend, the source of the noise becomes clear...It's a ZOMBIE!\n\n" +
                 "//Press any key to begin fight//");
             Console.ReadKey();
             Console.Clear();

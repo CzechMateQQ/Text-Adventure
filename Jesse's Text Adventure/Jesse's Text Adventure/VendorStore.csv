@@ -1,0 +1,8 @@
+﻿ItemId,ItemName,Attack,Armor,Weight,Cost
+1,Stabby Sword,20,0,30,50
+2,Gladiator's Pike,30,0,25,100
+3,MC's Hammer,35,0,40,300
+4,Excalibur,50,0,35,500
+5,Leather Armor,0,20,30,30
+6,Iron Armor,0,70,50,150
+7,Diamond Armor,0,100,80,300

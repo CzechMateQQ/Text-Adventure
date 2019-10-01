@@ -13,12 +13,6 @@ namespace Jesse_s_Text_Adventure
 
         public int attack = -1;
 
-        //Virtual method to utilize polymorphism in derived classes
-        public virtual void BattleCry()
-        {
-
-        }
-
         //Uses class inheritance to derive multiple enemy types from the base Enemy class
         public class Wolf : Enemy
         {
@@ -28,13 +22,6 @@ namespace Jesse_s_Text_Adventure
             {
                 health = 100;
                 attack = wolfRand.Next(5, 10);
-            }
-
-            //Override method for polymorphism
-            public override void BattleCry()
-            {
-                Console.WriteLine("The wolf howls.");
-                Console.ReadLine();
             }
         }
 
@@ -46,12 +33,6 @@ namespace Jesse_s_Text_Adventure
                health = 150;
                attack = zombRand.Next(10, 15);
             }
-            
-            public override void BattleCry()
-            {
-                Console.WriteLine("The zombie groans.");
-                Console.ReadLine();
-            }
         }
 
         public class Dragon : Enemy
@@ -62,18 +43,11 @@ namespace Jesse_s_Text_Adventure
                 health = 200;
                 attack = dragRand.Next(20, 25);
             }
-
-            public override void BattleCry()
-            {
-                Console.WriteLine("The dragon roars.");
-                Console.ReadLine();
-            }
         }
 
         //Method for each instance of combat called in main program
         public void BattleOne()
         {
-            Program.wolf.BattleCry();
             Console.WriteLine("//Wolf battle commence//");
             //Loop while both player and enemy have health remaining
             while (Player.PlayerHealth() > 0 && Program.wolf.health > 0)
@@ -110,7 +84,6 @@ namespace Jesse_s_Text_Adventure
 
         public void BattleTwo()
         {
-            Program.zombie.BattleCry();
             Console.WriteLine("//Zombie battle commence//");
             while (Player.PlayerHealth() > 0 && Program.zombie.health > 0)
             {
@@ -127,7 +100,7 @@ namespace Jesse_s_Text_Adventure
             if (Program.zombie.health <= 0)
             {
                 Console.Clear();
-                Console.WriteLine("You have defeated the zombie!");
+                Console.WriteLine("You have defefated the zombie!");
                 Program.user.playerGold += 200;
                 Console.WriteLine("You earned 200 gold!");
                 Console.ReadKey();
@@ -144,7 +117,6 @@ namespace Jesse_s_Text_Adventure
 
         public void BattleThree()
         {
-            Program.dragon.BattleCry();
             Console.WriteLine("//Dragon battle commence//");
             while (Player.PlayerHealth() > 0 && Program.dragon.health > 0)
             {
